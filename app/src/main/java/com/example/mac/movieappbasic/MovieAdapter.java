@@ -15,13 +15,21 @@ import android.widget.TextView;
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHolder> {
 
     private int mNumberItems;
+    final private GridItemClickListener mOnClickListener;
 
-    public MovieAdapter(int mNumberItems) {
+    public interface GridItemClickListener{
+        void onGridItemClick(int clickedItemIndex);
+    }
+
+    public MovieAdapter(int mNumberItems, GridItemClickListener listener) {
         this.mNumberItems = mNumberItems;
+        this.mOnClickListener=listener;
+
     }
 
     @Override
     public MovieAdapter.NumberViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+
         Context context=viewGroup.getContext();
         int layoutDesignItem= R.layout.layout_design;
         LayoutInflater inflater=LayoutInflater.from(context);
@@ -44,7 +52,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
         return mNumberItems;
     }
 
-    class NumberViewHolder extends RecyclerView.ViewHolder{
+    class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView mainImage;
         TextView movieText;
@@ -54,10 +62,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
             mainImage=itemView.findViewById(R.id.cardview_image);
             movieText=itemView.findViewById(R.id.movie_textView);
+
+            itemView.setOnClickListener(this);
         }
 
         void bind(int listIndex){
             movieText.setText(String.valueOf(listIndex));
+        }
+
+        @Override
+        public void onClick(View v) {
+            int clickedPosition=getAdapterPosition();
+            mOnClickListener.onGridItemClick(clickedPosition);
         }
     }
 }

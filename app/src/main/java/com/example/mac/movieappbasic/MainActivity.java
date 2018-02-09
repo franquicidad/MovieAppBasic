@@ -50,29 +50,32 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mMovieList.setLayoutManager(gridLayoutManager);
         mMovieList.setHasFixedSize(true);
 
-        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                Intent intentMovieDetail=new Intent(getBaseContext(),MovieDetail.class);
+        LoaderManager loaderManager=getSupportLoaderManager();
 
-                String title=mMovieAdapter.getItemId(position).getTitle();
+        loaderManager.initLoader(MOVIE_LOADER_ID,null,MainActivity.this);
 
 
-            }
-        });
-
-
-
-
-
+//
+//        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
+//            @Override
+//            public void onGridItemClick(int clickedItemIndex) {
+//
+//                Intent intentMovieDetail=new Intent(getBaseContext(), MovieDetail.class);
+//
+//                String title=mMovieAdapter.getItemId(clickedItemIndex).
+//
+//            }
+//        })
 
     }
 
 
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, Bundle args) {
-        return null;
+
+        String api_key= String.valueOf(R.string.movie_api_key);
+        return new MovieAsynctaskLoader(this, BASE_URL+api_key );
     }
 
     @Override

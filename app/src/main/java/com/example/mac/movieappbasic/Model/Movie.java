@@ -1,10 +1,13 @@
 package com.example.mac.movieappbasic.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by mac on 7/02/18.
  */
 
-public class Movie {
+public class Movie implements Parcelable{
 
     private String movieName;
     private String poster_path;
@@ -19,6 +22,30 @@ public class Movie {
         this.overview = overview;
         this.releaseDate = releaseDate;
     }
+
+    protected Movie(Parcel in) {
+        movieName = in.readString();
+        poster_path = in.readString();
+        if (in.readByte() == 0) {
+            voteAverage = null;
+        } else {
+            voteAverage = in.readDouble();
+        }
+        overview = in.readString();
+        releaseDate = in.readString();
+    }
+
+    public static final Creator<Movie> CREATOR = new Creator<Movie>() {
+        @Override
+        public Movie createFromParcel(Parcel in) {
+            return new Movie(in);
+        }
+
+        @Override
+        public Movie[] newArray(int size) {
+            return new Movie[size];
+        }
+    };
 
     public String getMovieName() {
         return movieName;
@@ -58,5 +85,24 @@ public class Movie {
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(movieName);
+        dest.writeString(poster_path);
+        if (voteAverage == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeDouble(voteAverage);
+        }
+        dest.writeString(overview);
+        dest.writeString(releaseDate);
     }
 }
