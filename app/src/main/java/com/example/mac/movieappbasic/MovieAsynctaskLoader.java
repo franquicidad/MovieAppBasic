@@ -1,7 +1,8 @@
 package com.example.mac.movieappbasic;
 
-import android.content.AsyncTaskLoader;
 import android.content.Context;
+import android.support.v4.app.LoaderManager;
+import android.support.v4.content.AsyncTaskLoader;
 
 import com.example.mac.movieappbasic.JsonUtils.JsonParsingMovie;
 import com.example.mac.movieappbasic.Model.Movie;

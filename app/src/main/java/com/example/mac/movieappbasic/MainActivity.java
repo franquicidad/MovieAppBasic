@@ -74,17 +74,23 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, Bundle args) {
 
-        String api_key= String.valueOf(R.string.movie_api_key);
-        return new MovieAsynctaskLoader(this, BASE_URL+api_key );
+        return new MovieAsynctaskLoader(this, BASE_URL);
     }
 
     @Override
     public void onLoadFinished(Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
 
+        mMovieAdapter.clear;
+        if (data != null) {
+            mMovieAdapter.addAll;
+        }
+
     }
 
     @Override
     public void onLoaderReset(Loader<ArrayList<Movie>> loader) {
+
+        mMovieAdapter.clear();
 
     }
 
