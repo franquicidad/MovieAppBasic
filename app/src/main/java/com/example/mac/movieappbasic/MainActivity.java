@@ -16,9 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.mac.movieappbasic.JsonUtils.JsonParsingMovie;
 import com.example.mac.movieappbasic.Model.Movie;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -50,23 +53,32 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mMovieList.setLayoutManager(gridLayoutManager);
         mMovieList.setHasFixedSize(true);
 
+        ImageView imageView=findViewById(R.id.cardview_image);
+
+        Picasso.with(this).load(JsonParsingMovie.parseMovie(JsonParsingMovie.buildUrl()))
+
+
+
+
 
         LoaderManager loaderManager=getSupportLoaderManager();
 
         loaderManager.initLoader(MOVIE_LOADER_ID,null,MainActivity.this);
 
 
-//
-//        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
-//            @Override
-//            public void onGridItemClick(int clickedItemIndex) {
-//
-//                Intent intentMovieDetail=new Intent(getBaseContext(), MovieDetail.class);
-//
-//                String title=mMovieAdapter.getItemId(clickedItemIndex).
-//
-//            }
-//        })
+
+
+        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
+            @Override
+            public void onGridItemClick(int clickedItemIndex) {
+
+                Intent intentMovieDetail=new Intent(getBaseContext(), MovieDetail.class);
+
+                mMovieAdapter.getItemId(clickedItemIndex);
+
+
+            }
+        })
 
     }
 
@@ -74,11 +86,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader<ArrayList<Movie>> onCreateLoader(int id, Bundle args) {
 
-        return new MovieAsynctaskLoader(this, BASE_URL);
+        return new MovieAsynctaskLoader(this, MERGED_BASE_URL);
     }
 
     @Override
     public void onLoadFinished(Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
+
+        ArrayList<Movie> movieArrayList=new ArrayList<>();
+        movieArrayList.addAll(data);
 
         mMovieAdapter.clear;
         if (data != null) {
@@ -89,6 +104,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoaderReset(Loader<ArrayList<Movie>> loader) {
+
 
         mMovieAdapter.clear();
 

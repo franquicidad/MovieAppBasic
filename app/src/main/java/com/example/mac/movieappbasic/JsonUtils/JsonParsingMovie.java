@@ -50,7 +50,7 @@ public class JsonParsingMovie {
         return url;
     }
 
-    private static URL buildUrl(String poster_path) {
+    public static URL buildUrl(String poster_path) {
         Uri builtUri = Uri.parse(IMAGE_URL).buildUpon()
                 .appendEncodedPath(SIZE_PARAM)
                 .appendEncodedPath(poster_path)

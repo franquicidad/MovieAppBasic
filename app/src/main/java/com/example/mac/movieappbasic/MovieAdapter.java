@@ -8,6 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mac.movieappbasic.Model.Movie;
+
+import java.util.ArrayList;
+
 /**
  * Created by mac on 7/02/18.
  */
@@ -43,6 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
     @Override
     public void onBindViewHolder(MovieAdapter.NumberViewHolder holder, int position) {
+
         holder.bind(position);
 
     }
@@ -67,7 +72,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
         }
 
         void bind(int listIndex){
-            movieText.setText(String.valueOf(listIndex));
+
+            ArrayList<Movie> arrayListAdapter= new ArrayList<>();
+            Movie movie=arrayListAdapter.get(listIndex);
+            String movieName= movie.getMovieName();
+            Double movieAverage=movie.getVoteAverage();
+            String movieReleaseDate=movie.getReleaseDate();
+            String movieOverview=movie.getOverview();
+
+
+
         }
 
         @Override
