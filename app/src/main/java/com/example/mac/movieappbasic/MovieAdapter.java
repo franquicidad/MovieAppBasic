@@ -2,6 +2,7 @@ package com.example.mac.movieappbasic;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHolder> {
 
+    private static final String TAG = MovieAdapter.class.getName() ;
     private int mNumberItems;
     final private GridItemClickListener mOnClickListener;
     private Context mContext;
@@ -83,6 +85,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
             String movieReleaseDate=movie.getReleaseDate();
             String movieOverview=movie.getOverview();
             String posterPath=movie.getPoster_path();
+            Log.e(TAG,"POSTER PATH--------->:");
 
             Picasso.with(mContext).load(String.valueOf(JsonParsingMovie.buildUrl(posterPath)));
 
