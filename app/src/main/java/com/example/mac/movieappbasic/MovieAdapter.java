@@ -61,6 +61,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     public void onBindViewHolder(MovieAdapter.NumberViewHolder holder, int position) {
 
         holder.bind(position);
+        addAll(arrayListAdapter);
 
     }
 
