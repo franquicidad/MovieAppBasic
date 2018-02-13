@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final String BASE_URL="https://api.themoviedb.org/3/movie/popular?api_key=";
     private static final String MERGED_BASE_URL= (BASE_URL+ R.string.movie_api_key);
     private static final String TOP_MOVIE ="https://api.themoviedb.org/3/movie/top_rated?api_key=";
-    private static final String MERGED_TOP_MOVIE= (TOP_MOVIE+R.string.movie_api_key);
+    private static final String MERGED_TOP_MOVIE= (TOP_MOVIE+ R.string.movie_api_key);
 
     private static final int NUM_LIST_ITEMS=100;
     private static final int MOVIE_LOADER_ID = 1;
@@ -52,14 +52,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         gridLayoutManager = new GridLayoutManager(this,2);
         mMovieList.setLayoutManager(gridLayoutManager);
         mMovieList.setHasFixedSize(true);
-
-        ImageView imageView=findViewById(R.id.cardview_image);
-
-        Picasso.with(this).load(JsonParsingMovie.parseMovie(JsonParsingMovie.buildUrl()))
-
-
-
-
+        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS,null);
+        mMovieList.setAdapter(mMovieAdapter);
 
         LoaderManager loaderManager=getSupportLoaderManager();
 
@@ -68,17 +62,17 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
 
-        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
-            @Override
-            public void onGridItemClick(int clickedItemIndex) {
-
-                Intent intentMovieDetail=new Intent(getBaseContext(), MovieDetail.class);
-
-                mMovieAdapter.getItemId(clickedItemIndex);
-
-
-            }
-        })
+//        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
+//            @Override
+//            public void onGridItemClick(int clickedItemIndex) {
+//
+//                Intent intentMovieDetail=new Intent(getBaseContext(), MovieDetail.class);
+//
+//                mMovieAdapter.getItemId(clickedItemIndex);
+//
+//
+//            }
+//        })
 
     }
 
@@ -95,10 +89,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ArrayList<Movie> movieArrayList=new ArrayList<>();
         movieArrayList.addAll(data);
 
-        mMovieAdapter.clear;
-        if (data != null) {
-            mMovieAdapter.addAll;
-        }
+
 
     }
 
@@ -106,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void onLoaderReset(Loader<ArrayList<Movie>> loader) {
 
 
-        mMovieAdapter.clear();
+
 
     }
 

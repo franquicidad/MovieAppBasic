@@ -8,7 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.mac.movieappbasic.JsonUtils.JsonParsingMovie;
 import com.example.mac.movieappbasic.Model.Movie;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -80,6 +82,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
             String movieReleaseDate=movie.getReleaseDate();
             String movieOverview=movie.getOverview();
 
+            Picasso.with(MovieAdapter.this).load(JsonParsingMovie.buildUrl());
 
 
         }
