@@ -52,7 +52,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         gridLayoutManager = new GridLayoutManager(this,2);
         mMovieList.setLayoutManager(gridLayoutManager);
         mMovieList.setHasFixedSize(true);
-        mMovieAdapter=new MovieAdapter(NUM_LIST_ITEMS,null);
+        mMovieAdapter=new MovieAdapter(this, NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
+            @Override
+            public void onGridItemClick(int clickedItemIndex) {
+
+            }
+        });
         mMovieList.setAdapter(mMovieAdapter);
 
         LoaderManager loaderManager=getSupportLoaderManager();

@@ -22,15 +22,16 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
     private int mNumberItems;
     final private GridItemClickListener mOnClickListener;
+    private Context mContext;
 
     public interface GridItemClickListener{
         void onGridItemClick(int clickedItemIndex);
     }
 
-    public MovieAdapter(int mNumberItems, GridItemClickListener listener) {
+    public MovieAdapter(Context mContext,int mNumberItems, GridItemClickListener listener) {
         this.mNumberItems = mNumberItems;
         this.mOnClickListener=listener;
-
+        this.mContext=mContext;
     }
 
     @Override
@@ -81,8 +82,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
             Double movieAverage=movie.getVoteAverage();
             String movieReleaseDate=movie.getReleaseDate();
             String movieOverview=movie.getOverview();
+            String posterPath=movie.getPoster_path();
 
-            Picasso.with(MovieAdapter.this).load(JsonParsingMovie.buildUrl());
+            Picasso.with(mContext).load(String.valueOf(JsonParsingMovie.buildUrl(posterPath)));
 
 
         }
