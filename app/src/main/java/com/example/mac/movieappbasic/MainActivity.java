@@ -94,8 +94,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoadFinished(Loader<ArrayList<Movie>> loader, ArrayList<Movie> data) {
 
-        ArrayList<Movie> movieArrayList=new ArrayList<>();
-        movieArrayList.addAll(data);
+        adapterArrayList=new ArrayList<>();
+        adapterArrayList.addAll(data);
 
 
 
