@@ -25,6 +25,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     private int mNumberItems;
     final private GridItemClickListener mOnClickListener;
     private Context mContext;
+    ArrayList<Movie> arrayListAdapter;
 
     public interface GridItemClickListener{
         void onGridItemClick(int clickedItemIndex);
@@ -34,6 +35,12 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
         this.mNumberItems = mNumberItems;
         this.mOnClickListener=listener;
         this.mContext=mContext;
+    }
+
+    public void addAll(ArrayList<Movie> movies){
+
+        arrayListAdapter.addAll(movies);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -78,7 +85,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
         void bind(int listIndex){
 
-            ArrayList<Movie> arrayListAdapter= new ArrayList<>();
+            arrayListAdapter= new ArrayList<>();
             Movie movie=arrayListAdapter.get(listIndex);
             String movieName= movie.getMovieName();
             Double movieAverage=movie.getVoteAverage();
