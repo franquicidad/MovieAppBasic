@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private MovieAdapter mMovieAdapter;
     private RecyclerView mMovieList;
     GridLayoutManager gridLayoutManager;
+    ArrayList<Movie> adapterArrayList;
     GridView gridView;
 
 
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
         mMovieList.setAdapter(mMovieAdapter);
+        adapterArrayList=new ArrayList<>();
+        mMovieAdapter.addAll(adapterArrayList);
 
         LoaderManager loaderManager=getSupportLoaderManager();
 
