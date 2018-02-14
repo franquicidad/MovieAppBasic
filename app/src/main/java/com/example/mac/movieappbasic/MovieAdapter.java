@@ -25,7 +25,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     private int mNumberItems;
     final private GridItemClickListener mOnClickListener;
     private Context mContext;
-    ArrayList<Movie> arrayListAdapter;
+    ArrayList<Movie> arrayListAdapter=new ArrayList<>();
+
 
     public interface GridItemClickListener{
         void onGridItemClick(int clickedItemIndex);
@@ -38,6 +39,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     }
 
     public void addAll(ArrayList<Movie> movies){
+
+        arrayListAdapter.clear();
+
 
         arrayListAdapter.addAll(movies);
         notifyDataSetChanged();
@@ -61,7 +65,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     public void onBindViewHolder(MovieAdapter.NumberViewHolder holder, int position) {
 
         holder.bind(position);
-        addAll(arrayListAdapter);
 
     }
 
