@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<ArrayList<Movie>>{
 
     private static final String BASE_URL="https://api.themoviedb.org/3/movie/popular?api_key=";
-    private static final String MERGED_BASE_URL= (BASE_URL+ R.string.movie_api_key);
+    private final String MERGED_BASE_URL= (BASE_URL+ BuildConfig.API_KEY);
     private static final String TOP_MOVIE ="https://api.themoviedb.org/3/movie/top_rated?api_key=";
     private static final String MERGED_TOP_MOVIE= (TOP_MOVIE+ R.string.movie_api_key);
 
