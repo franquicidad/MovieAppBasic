@@ -39,8 +39,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
     public void addAll(ArrayList<Movie> movies){
 
-        arrayListAdapter=new ArrayList<>();
-
         arrayListAdapter.addAll(movies);
         notifyDataSetChanged();
     }
