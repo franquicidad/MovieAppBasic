@@ -28,6 +28,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
     ArrayList<Movie> arrayListAdapter=new ArrayList<>();
 
 
+
     public interface GridItemClickListener{
         void onGridItemClick(int clickedItemIndex);
     }
@@ -97,7 +98,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
             String posterPath=movie.getPoster_path();
             Log.e(TAG,"POSTER PATH--------->:");
 
-            Picasso.with(mContext).load(String.valueOf(JsonParsingMovie.buildUrl(posterPath)));
+
+
+            Picasso.with(mContext).load(posterPath).into(mainImage);
 
 
         }

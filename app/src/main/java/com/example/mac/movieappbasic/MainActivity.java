@@ -57,6 +57,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             @Override
             public void onGridItemClick(int clickedItemIndex) {
 
+                String title=
+
             }
         });
         mMovieList.setAdapter(mMovieAdapter);
