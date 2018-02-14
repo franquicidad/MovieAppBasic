@@ -39,6 +39,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
     public void addAll(ArrayList<Movie> movies){
 
+        arrayListAdapter=new ArrayList<>();
+
         arrayListAdapter.addAll(movies);
         notifyDataSetChanged();
     }
@@ -86,7 +88,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
         void bind(int listIndex){
 
-            arrayListAdapter= new ArrayList<>();
             Movie movie=arrayListAdapter.get(listIndex);
             String movieName= movie.getMovieName();
             Double movieAverage=movie.getVoteAverage();
