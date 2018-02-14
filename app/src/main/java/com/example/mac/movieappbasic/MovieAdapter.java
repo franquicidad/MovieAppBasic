@@ -69,7 +69,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
     @Override
     public int getItemCount() {
-        return mNumberItems;
+        return arrayListAdapter.size();
     }
 
     class NumberViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
