@@ -30,7 +30,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
 
 
     public interface GridItemClickListener{
-        void onGridItemClick(int clickedItemIndex);
+        void onGridItemClick(Movie movie);
     }
 
     public MovieAdapter(Context mContext,int mNumberItems, GridItemClickListener listener) {
@@ -108,7 +108,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
         @Override
         public void onClick(View v) {
             int clickedPosition=getAdapterPosition();
-            mOnClickListener.onGridItemClick(clickedPosition);
+            mOnClickListener.onGridItemClick(movie);
         }
     }
 }
