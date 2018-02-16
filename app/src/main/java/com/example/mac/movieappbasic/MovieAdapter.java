@@ -108,6 +108,9 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.NumberViewHo
         @Override
         public void onClick(View v) {
             int clickedPosition=getAdapterPosition();
+            Movie movie=arrayListAdapter.get(clickedPosition);
+
+
             mOnClickListener.onGridItemClick(movie);
         }
     }

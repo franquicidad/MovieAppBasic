@@ -54,13 +54,21 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         mMovieList.setLayoutManager(gridLayoutManager);
         mMovieList.setHasFixedSize(true);
         mMovieAdapter=new MovieAdapter(this, NUM_LIST_ITEMS, new MovieAdapter.GridItemClickListener() {
+
             @Override
-            public void onGridItemClick(int clickedItemIndex) {
+            public void onGridItemClick(Movie movie) {
+
+                Intent intentDetailActivity=new Intent(getBaseContext(),MovieDetail.class);
+
+                intentDetailActivity.putExtra("MOVIE_OBJECT",movie);
+
+                startActivity(intentDetailActivity);
+
 
 
             }
         });
-        mMovieList.setAdapter(mMovieAdapter);
+            mMovieList.setAdapter(mMovieAdapter);
         adapterArrayList=new ArrayList<>();
         mMovieAdapter.addAll(adapterArrayList);
 
