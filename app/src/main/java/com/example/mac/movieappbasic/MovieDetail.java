@@ -29,19 +29,19 @@ public class MovieDetail extends AppCompatActivity{
 
         Intent intent=getIntent();
 
-        Movie movie=getIntent().getExtras().getParcelable("movie");
+        Movie movie=getIntent().getExtras().getParcelable("MOVIE_OBJECT");
 
-        String movieName=intent.getParcelableExtra("movieName");
-        String poster=intent.getParcelableExtra("poster_path");
-        String voteAverage=intent.getParcelableExtra("voteAverage");
-        String overview=intent.getParcelableExtra("overview");
-        String releaseDate=intent.getParcelableExtra("releaseDate");
-        String posterPath=movie.getPoster_path();
+
+        String movieName=movie.getMovieName();
+        String poster=movie.getPoster_path();
+        Double voteAverage=movie.getVoteAverage();
+        String overview=movie.getOverview();
+        String releaseDate=movie.getReleaseDate();
 
 
         imageDetail=findViewById(R.id.imageMovie_detail_activity);
 
-        Picasso.with(this).load(posterPath).into(imageDetail);
+        Picasso.with(this).load(poster).into(imageDetail);
 
         titleDetail =findViewById(R.id.text_movie_name);
         titleDetail.setText(movieName);

@@ -21,6 +21,7 @@ public class Movie implements Parcelable{
         this.voteAverage = voteAverage;
         this.overview = overview;
         this.releaseDate = releaseDate;
+
     }
 
     protected Movie(Parcel in) {
@@ -86,6 +87,7 @@ public class Movie implements Parcelable{
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
+
 
     @Override
     public int describeContents() {
